@@ -10,8 +10,8 @@ if [ $majordomo_branch == "a" ]; then
   showMessage "Downloading ALPHA branch."
   wget https://github.com/sergejey/majordomo/archive/refs/heads/alpha.zip
   runSudo "unzip alpha.zip -d /var/www/"
-  runSudo "mv -f /var/www/majordomo-alpha/* /var/www/html/"
-  runSudo "mv -f /var/www/majordomo-alpha/.htaccess /var/www/html/"
+  runSudo "mv -f /var/www/majordomo-alpha/* /var/www/"
+  runSudo "mv -f /var/www/majordomo-alpha/.htaccess /var/www/"
   runSudo "rm -Rf /var/www/majordomo-alpha"
   rm alpha.zip
 else
@@ -19,28 +19,28 @@ else
   showMessage "Downloading MASTER branch."
   wget https://github.com/sergejey/majordomo/archive/refs/heads/master.zip
   runSudo "unzip master.zip -d /var/www/"
-  runSudo "mv -f /var/www/majordomo-master/* /var/www/html/"
-  runSudo "mv -f /var/www/majordomo-master/.htaccess /var/www/html/"
+  runSudo "mv -f /var/www/majordomo-master/* /var/www/"
+  runSudo "mv -f /var/www/majordomo-master/.htaccess /var/www/"
   runSudo "rm -Rf /var/www/majordomo-master"
   rm master.zip
 fi
 
 showMessage "Changing files ownership."
-runSudo "chown -Rf www-data:www-data /var/www/html"
+runSudo "chown -Rf www-data:www-data /var/www"
 showMessage "Removing index.html."
-runSudo "rm /var/www/html/index.html"
+runSudo "rm /var/www/index.html"
 showMessage "Updating file attributes."
-runSudo "find /var/www/html/ -type f -exec chmod 0666 {} \;"
+runSudo "find /var/www/ -type f -exec chmod 0666 {} \;"
 showMessage "Updating dirs attributes."
-runSudo "find /var/www/html/ -type d -exec chmod 0777 {} \;"
+runSudo "find /var/www/ -type d -exec chmod 0777 {} \;"
 
 
 showMessage "Updating config file."
-runSudo "mv /var/www/html/config.php.sample /var/www/html/config.php"
-#replaceString "/var/www/html/config.php" "'DB_PASSWORD', ''" "'DB_PASSWORD', '$db_root'"
-sudo sed -i "s/'DB_PASSWORD', ''/'DB_PASSWORD', '$db_root'/" /var/www/html/config.php
-#replaceString "/var/www/html/config.php" "'\/var\/www'" "'\/var\/www\/html'"
-sudo sed -i "s/'\/var\/www'/'\/var\/www\/html'/" /var/www/html/config.php
+runSudo "mv /var/www/config.php.sample /var/www/config.php"
+#replaceString "/var/www/config.php" "'DB_PASSWORD', ''" "'DB_PASSWORD', '$db_root'"
+sudo sed -i "s/'DB_PASSWORD', ''/'DB_PASSWORD', '$db_root'/" /var/www/config.php
+#replaceString "/var/www/config.php" "'\/var\/www'" "'\/var\/www'"
+sudo sed -i "s/'\/var\/www'/'\/var\/www'/" /var/www/html/config.php
 
 # DATABASE
 showMessage "Installing MajorDoMo database."
