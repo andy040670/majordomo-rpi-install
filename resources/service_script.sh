@@ -9,9 +9,9 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
-dir="/var/www/html/"
+dir="/var/www/"
 user="www-data"
-cmd="php /var/www/html/cycle.php"
+cmd="php /var/www/cycle.php"
 
 name=`basename $0`
 pid_file="/var/run/$name.pid"
