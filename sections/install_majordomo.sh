@@ -40,7 +40,7 @@ runSudo "mv /var/www/config.php.sample /var/www/config.php"
 #replaceString "/var/www/config.php" "'DB_PASSWORD', ''" "'DB_PASSWORD', '$db_root'"
 sudo sed -i "s/'DB_PASSWORD', ''/'DB_PASSWORD', '$db_root'/" /var/www/config.php
 #replaceString "/var/www/config.php" "'\/var\/www'" "'\/var\/www'"
-sudo sed -i "s/'\/var\/www'/'\/var\/www'/" /var/www/html/config.php
+sudo sed -i "s/'\/var\/www'/'\/var\/www'/" /var/www/config.php
 
 # DATABASE
 showMessage "Installing MajorDoMo database."
