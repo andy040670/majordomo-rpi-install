@@ -11,8 +11,9 @@ runSudo "a2enmod rewrite"
 # Allow .htaccess for all folders
 replaceString "/etc/apache2/apache2.conf" "AllowOverride None" "AllowOverride All"
 
-# Disable access log (to save card)
+# Disable access log (to save card), Change Document Root
 replaceString "/etc/apache2/sites-available/000-default.conf" "CustomLog" "#CustomLog"
+replaceString "/etc/apache2/sites-available/000-default.conf" "DocumentRoot /var/www/html" "DocumentRoot /var/www"
 replaceString "/etc/apache2/conf-available/other-vhosts-access-log.conf" "CustomLog" "#CustomLog"
 
 # Fixing ownership
