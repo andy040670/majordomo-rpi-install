@@ -32,14 +32,14 @@ replaceString "/etc/init.d/mariadb" "Required-Start:    \$remote_fs \$syslog" "R
 runSudo "service mysql start"
 
 # Prepare MajorDoMo
-runSudo "cp /var/www/html/scripts/periodical_db_save.php /var/www/html/scripts/cycle_periodical_db_save.php"
+runSudo "cp /var/www/html/scripts/periodical_db_save.php /var/www/scripts/cycle_periodical_db_save.php"
 
-runSudo "mkdir /var/www/html/database_backup"
-runSudo "chmod 0777 /var/www/html/database_backup"
-runSudo "chown www-data:www-data /var/www/html/database_backup"
-runSudoNoLog "/usr/bin/mysqldump -h localhost --user=root --password=$db_root --no-create-db --add-drop-table db_terminal>/var/www/html/database_backup/db.sql"
-runSudo "chown www-data:www-data /var/www/html/database_backup/db.sql"
-runSudo "chmod 0666 /var/www/html/database_backup/db.sql"
+runSudo "mkdir /var/www/database_backup"
+runSudo "chmod 0777 /var/www/database_backup"
+runSudo "chown www-data:www-data /var/www/database_backup"
+runSudoNoLog "/usr/bin/mysqldump -h localhost --user=root --password=$db_root --no-create-db --add-drop-table db_terminal>/var/www/database_backup/db.sql"
+runSudo "chown www-data:www-data /var/www/database_backup/db.sql"
+runSudo "chmod 0666 /var/www/database_backup/db.sql"
 
 runSudo "service majordomo start"
 
