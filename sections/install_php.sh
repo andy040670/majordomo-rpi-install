@@ -23,13 +23,14 @@ runSudo "apt-get install -y php$PHPVERSION-curl"
 runSudo "apt-get install -y php$PHPVERSION-gd"
 runSudo "apt-get install -y php$PHPVERSION-mbstring"
 runSudo "apt-get install -y php$PHPVERSION-xml"
+runSudo "apt-get install -y php$PHPVERSION-dev"
 runSudo "apt-get install -y php$PHPVERSION-bcmath"
 #sudo apt-get install -y php$PHPVERSION-mcrypt"
 runSudo "apt-get install -y php$PHPVERSION-zip"
 runSudo "apt-get install -y php$PHPVERSION-redis"
 
-runSudo 'echo "<?php phpinfo(); ?>">/var/www/html/php.php'
-runSudo 'chown www-data:www-data /var/www/html/php.php'
+runSudo 'echo "<?php phpinfo(); ?>">/var/www/php.php'
+runSudo 'chown www-data:www-data /var/www/php.php'
 
 # Update php.ini config
 runSudo "sed -i '/post_max_size/s/8/200/' /etc/php/$PHPVERSION/apache2/php.ini"
