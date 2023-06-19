@@ -10,7 +10,7 @@ Prerequisites
 
 Usage:
 ```
-curl -s https://raw.githubusercontent.com/andy040670/majordomo-rpi-install/main/install.sh | bash && bash ~/majordomo-rpi-install/install.sh
+curl -s https://raw.githubusercontent.com/andy040670/majordomo-rpi-install/main/install.sh#dev | bash && bash ~/majordomo-rpi-install/install.sh
 ```
 
 Sample run:
