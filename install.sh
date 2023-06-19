@@ -10,7 +10,7 @@ cd $destPath || exit
 sudo apt-get install -y git
 if [ $devRun != "y" ]; then
  rm -Rf ./majordomo-rpi-install
- git clone https://github.com/sergejey/majordomo-rpi-install.git
+ git clone https://github.com/andy040670/majordomo-rpi-install.git
 fi
 
 if [ "$0" == *"curl"* ]; then
@@ -22,7 +22,7 @@ cd $destPath/majordomo-rpi-install
 clear
 
 echo "Welcome to MajorDoMo installation script for Raspberry Pi!"
-echo "More details at https://github.com/sergejey/majordomo-rpi-install"
+echo "More details at https://github.com/andy040670/majordomo-rpi-install"
 echo ""
 read -p "Ok, are you ready to start? [y]: " startReady
 startReady=${startReady:-y}
