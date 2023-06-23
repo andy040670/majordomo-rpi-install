@@ -15,6 +15,7 @@ fi
 PHPVERSION=$(ls -Art1 /etc/php | tail -n 1)
 
 showMessage "PHP version installed: $PHPVERSION"
+
 runSudo "apt-get install -y libapache2-mod-php$PHPVERSION"
 runSudo "apt-get install -y php$PHPVERSION-mysql"
 runSudo "apt-get install -y php$PHPVERSION-common"
