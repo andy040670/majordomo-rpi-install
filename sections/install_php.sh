@@ -1,16 +1,20 @@
 #!/bin/bash
 
-if checkOS "Ubuntu 22"; then
- sudo apt install software-properties-common
- sudo add-apt-repository -y ppa:ondrej/php
- sudo apt update -y
+showMessage "Installing PHP..."
+if checkOS "Ubuntu 22" && [[ $majordomo_branch == "m" ]]; then
+ showMessage "Ubuntu 22, trying to use alternative repository for PHP 7.4"
+ runSudo "apt-get install -y software-properties-common"
+ runSudo "add-apt-repository -y ppa:ondrej/php"
+ runSudo "apt update -y"
+ runSudo "apt-get install -y php7.4"
+else
+ showMessage "Using default PHP version."
+ runSudo "apt-get install -y php"
 fi
 
-showMessage "Installing PHP..."
-runSudo "apt-get install -y php"
 PHPVERSION=$(ls -Art1 /etc/php | tail -n 1)
 
-showMessage "Version: $PHPVERSION"
+showMessage "PHP version installed: $PHPVERSION"
 runSudo "apt-get install -y libapache2-mod-php$PHPVERSION"
 runSudo "apt-get install -y php$PHPVERSION-mysql"
 runSudo "apt-get install -y php$PHPVERSION-common"
