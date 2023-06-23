@@ -18,6 +18,14 @@ function showMessage {
   echo "" >> $LOG_FILE
 }
 
+function isVM {
+ if lspci | grep -q "VirtualBox"; then
+  return 0
+ else
+  return 1
+ fi
+}
+
 function installModule {
   showMessage "Installing module $1"
   wget -q http://localhost/modules/market/update_iframe.php?mode2=install\&name=$1
