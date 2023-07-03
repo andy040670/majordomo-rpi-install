@@ -11,4 +11,4 @@ if [[ -f ./resources/$backup_code/dump.sql ]]; then
   showMessage "Backup downloaded."
 else
   showMessage "Backup download failed!"
-fi
+fi 
