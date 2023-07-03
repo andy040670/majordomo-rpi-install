@@ -71,4 +71,4 @@ set_disable_updates=${set_disable_updates:-y}
 #install_zwave2mqtt=${install_zwave2mqtt:-n}
 
 #read -p "Install KNX2MQTT (y/n) [n]: " install_knx2mqtt
-#install_knx2mqtt=${install_knx2mqtt:-n}
+#install_knx2mqtt=${install_knx2mqtt:-n} 
