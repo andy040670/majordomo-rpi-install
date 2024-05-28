@@ -22,7 +22,7 @@ cd $destPath/majordomo-rpi-install
 clear
 
 echo "Welcome to MajorDoMo installation script for Raspberry Pi!"
-echo "More details at https://github.com/andy040670/majordomo-rpi-install"
+echo "More details at https://github.com/andy040670/majordomo-rpi-install#dev"
 echo ""
 read -p "Ok, are you ready to start? [y]: " startReady
 startReady=${startReady:-y}
